@@ -1,0 +1,27 @@
+{
+  "name": "svglogogenerator",
+  "version": "1.0.0",
+  "description": "Create SVG logo for client",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "SVG",
+    "Logo",
+    "Genrator",
+    "Node",
+    "NPM"
+  ],
+  "author": "drauf727",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "jest": "^29.7.0"
+  }
+}
