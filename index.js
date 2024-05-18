@@ -2,8 +2,16 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const jest = require('jest');
+// const { square, circle, triangle } = require('./lib/shapes');
+
+
 // Creating a questions list
 const questions = [
+    {
+        name: 'text',
+        message: 'Choose your text (3 characters max)',
+        type: 'input'
+    },
     {
         name: 'fontcolor',
         message: 'Type in font color (name or hexadecimal number)',
@@ -26,9 +34,19 @@ const questions = [
 inquirer.
 prompt(questions)
 .then((answer) => {
-    console.log(`You selected font color: ${answer.fontcolor}, shape color: ${answer.shapecolor}, and the shape of ${answer.shape}!!`),
-    (err) => err? console.log(err) : console.log('Success');
+    fs.writeFile('logo.svg', 
+`
+<svg version="1.1" width="500" height="500" xmlns="http://www.w2.ord/2000/svg">
+<polygon points="250,0 0,400 500,400" class="triangle" fill="${answer.shapecolor}"/>
+<text x="50%" y="50%" font-size="10rem" text-anchor="middle" dominant-baseline="middle" fill="${answer.fontcolor}">
+    ${answer.text}   
+</text>
+</svg> 
+`
+, 
+    //Catching errors
+    (err) => err? console.log(err) : console.log('Success'));
 })
-.catch((error) =>{
+.catch((error) => {
     console.log(error)
 });
