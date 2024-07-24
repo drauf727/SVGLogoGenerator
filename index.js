@@ -6,7 +6,9 @@ const jest = require('jest');
 
 
 // Creating a questions list
-const questions = [
+// const questions = [
+const Questions = [    
+
     {
         name: 'text',
         message: 'Choose your text (3 characters max)',
@@ -23,14 +25,29 @@ const questions = [
         type: 'input'
     },
     {
-        name: 'shape',
+        name: 'shapetype',
         message: 'Select shape',
         type: 'list',
         choices: ['triangle', 'square', 'circle']
     }
 ]
-
-// Inquirer prompt
+// .then(({ text, fontcolor, shapecolor, shapetype }) => {
+// let shape;
+// switch(shapetype){
+//     case 'triangle':
+//         shape = new Triangle();
+//         break;
+//         case 'square':
+//         shape = new Square();
+//         break;
+//         default:
+//         shape = new Circle();
+//         break;
+// }
+// shape.setcolor(shapecolor)
+// })
+// }
+// // Inquirer prompt
 inquirer.
 prompt(questions)
 .then((answer) => {
