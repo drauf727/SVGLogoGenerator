@@ -61,6 +61,3 @@ ${writeShape}
 .catch((error) => {
     console.log(error)
 });
-
-
-{/* <polygon points="250,0 0,400 500,400" class="triangle" fill="${answer.shapecolor}"/> */}
