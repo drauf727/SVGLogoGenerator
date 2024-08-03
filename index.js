@@ -2,12 +2,11 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const jest = require('jest');
-// const { square, circle, triangle } = require('./lib/shapes');
+const { Square, Circle, Triangle } = require('./lib/shapes');
 
 
 // Creating a questions list
-// const questions = [
-const Questions = [    
+const questions = [    
 
     {
         name: 'text',
@@ -31,30 +30,25 @@ const Questions = [
         choices: ['triangle', 'square', 'circle']
     }
 ]
-// .then(({ text, fontcolor, shapecolor, shapetype }) => {
-// let shape;
-// switch(shapetype){
-//     case 'triangle':
-//         shape = new Triangle();
-//         break;
-//         case 'square':
-//         shape = new Square();
-//         break;
-//         default:
-//         shape = new Circle();
-//         break;
-// }
-// shape.setcolor(shapecolor)
-// })
-// }
-// // Inquirer prompt
+
 inquirer.
 prompt(questions)
 .then((answer) => {
+    let newShape;
+    switch (answer.shapetype){
+        case "triangle": newShape = new Triangle(answer.shapecolor);
+        break;
+        case "square": newShape = new Square(answer.shapecolor);
+        break;
+        case "circle": newShape = new Circle(answer.shapecolor);
+        break;
+    }
+    const writeShape = newShape.render();
+
     fs.writeFile('logo.svg', 
 `
 <svg version="1.1" width="500" height="500" xmlns="http://www.w2.ord/2000/svg">
-<polygon points="250,0 0,400 500,400" class="triangle" fill="${answer.shapecolor}"/>
+${writeShape}
 <text x="50%" y="50%" font-size="10rem" text-anchor="middle" dominant-baseline="middle" fill="${answer.fontcolor}">
     ${answer.text}   
 </text>
@@ -67,3 +61,6 @@ prompt(questions)
 .catch((error) => {
     console.log(error)
 });
+
+
+{/* <polygon points="250,0 0,400 500,400" class="triangle" fill="${answer.shapecolor}"/> */}
